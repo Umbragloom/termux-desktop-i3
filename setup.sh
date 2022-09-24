@@ -148,7 +148,7 @@ setup_omz() {
     # Download and set up Powerlevl10K for ZSH
    	echo -e ${CYAN}"\n[*] Installing powerlevel10k... \n"
 
-    { reset:color, git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k; } 
+    { reset_color, git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k; } 
 
 	# configuring termux
 	echo -e ${CYAN}"\n[*] Configuring Termux..."

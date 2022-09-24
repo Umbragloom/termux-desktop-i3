@@ -48,10 +48,12 @@ usage() {
 
 ## Update, X11-repo, Program Installation
 _pkgs=(bc bmon calc calcurse curl dbus elinks feh desktop-file-utils fontconfig-utils fsmon \
-		geany gtk2 gtk3 htop-legacy imagemagick jq leafpad man mpc mpd mutt ncmpcpp \
-		ncurses-utils neofetch otter-browser obconf openssl-tool polybar ranger rofi \
-		startup-notification termux-api pcmanfm tigervnc neovim wget xarchiver xbitmaps \
-		xfce4-terminal xmlstarlet audacious xorg-font-util xorg-xrdb zsh i3 picom)
+		geany gtk2 gtk3 htop-legacy imagemagick jq man mpc mpd mutt ncmpcpp \
+		ncurses-utils neofetch obconf openssl-tool polybar ranger rofi \
+		startup-notification termux-api pcmanfm tigervnc vim wget xarchiver xbitmaps \
+		xfce4-terminal xmlstarlet audacious xorg-font-util xorg-xrdb zsh i3 \
+        picom tmux git zip unzip python nodejs grep ffmpeg openssh w3m cowsay \
+    perl ruby rust termux-exec )
 
 setup_base() {
 	echo -e ${RED}"\n[*] Installing Termux Desktop..."
@@ -92,7 +94,7 @@ setup_omz() {
 	echo -e ${CYAN}"\n[*] Installing Oh-my-zsh... \n"
 	{ reset_color; git clone https://github.com/robbyrussell/oh-my-zsh.git --depth 1 $HOME/.oh-my-zsh; }
 	cp $HOME/.oh-my-zsh/templates/zshrc.zsh-template $HOME/.zshrc
-	sed -i -e 's/ZSH_THEME=.*/ZSH_THEME="sorin"/g' $HOME/.zshrc
+	sed -i -e 's/ZSH_THEME=.*/ZSH_THEME="powerlevel10k/powerlevel10k"/g' $HOME/.zshrc
 	sed -i -e 's|# export PATH=.*|export PATH=$HOME/.local/bin:$PATH|g' $HOME/.zshrc
 	# ZSH theme
 	cat > $HOME/.oh-my-zsh/custom/themes/sorin.zsh-theme <<- _EOF_
@@ -143,6 +145,11 @@ setup_omz() {
 		neofetch
 	_EOF_
 
+    # Download and set up Powerlevl10K for ZSH
+   	echo -e ${CYAN}"\n[*] Installing powerlevel10k... \n"
+
+    { reset:color, git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k; } 
+
 	# configuring termux
 	echo -e ${CYAN}"\n[*] Configuring Termux..."
 	if [[ ! -d "$HOME/.termux" ]]; then
@@ -152,31 +159,31 @@ setup_omz() {
 	cp $(pwd)/files/.fonts/icons/dejavu-nerd-font.ttf $HOME/.termux/font.ttf
 	# color-scheme
 	cat > $HOME/.termux/colors.properties <<- _EOF_
-		background 		: #000000
-		foreground 		: #eceff1
+		background 		: #000b1e
+		foreground 		: #0abcdc6
 
-		color0  			: #000000
-		color8  			: #37474f
-		color1  			: #ff9800
-		color9  			: #ffa74d
-		color2  			: #8bc34a
-		color10 			: #9ccc65
-		color3  			: #ffc107
-		color11 			: #ffa000
-		color4  			: #03a9f4
-		color12 			: #81d4fa
-		color5  			: #e91e63
-		color13 			: #ad1457
-		color6  			: #009688
-		color14 			: #26a69a
-		color7  			: #cfd8dc
-		color15 			: #eceff1
+		color0  			: #123e7c
+		color8  			: #1c61c2
+        color7              : #d7d7d5
+        color15             : #d7d7d5
+		color1  			: #ff0000
+		color9  			: #ff0000
+		color2  			: #d300c4
+		color10 			: #d300c4
+		color3  			: #f57800
+		color11 			: #ff5780
+		color4  			: #123e7c
+		color12 			: #00ff00
+		color5  			: #711c91
+		color13 			: #711c91
+		color6  			: #0abdc6
+		color14 			: #0abdc6
 	_EOF_
 	# button config
 	cat > $HOME/.termux/termux.properties <<- _EOF_
 		extra-keys = [ \\
-		 ['ESC','|', '/', '~','HOME','UP','END'], \\
-		 ['CTRL', 'TAB', '=', '-','LEFT','DOWN','RIGHT'] \\
+		 ['ESC','|', '/', '~','HOME','UP','END','PGUP','DEL'], \\
+		 ['CTRL', 'TAB', '=', '-','LEFT','DOWN','RIGHT','PGDN','BKSP'] \\
 		]	
 	_EOF_
 

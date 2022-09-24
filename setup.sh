@@ -52,7 +52,7 @@ _pkgs=(bc bmon calc calcurse curl dbus elinks feh desktop-file-utils fontconfig-
 		ncurses-utils neofetch obconf openssl-tool polybar ranger rofi \
 		startup-notification termux-api pcmanfm tigervnc vim wget xarchiver xbitmaps \
 		xfce4-terminal xmlstarlet audacious xorg-font-util xorg-xrdb zsh i3 \
-        picom tmux git zip unzip python nodejs grep ffmpeg openssh w3m cowsay \
+        picom tmux zip unzip python nodejs grep ffmpeg openssh w3m cowsay \
     perl ruby rust termux-exec )
 
 setup_base() {

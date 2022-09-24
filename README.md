@@ -15,7 +15,7 @@ pkg install git
 
 - Clone this repository
 ```
-git clone --depth=1 https://github.com/Gorkido/termux-desktop-i3.git
+git clone --depth=1 https://github.com/Umbragloom/termux-desktop-i3.git
 ```
 
 - CD to cloned directory and run **setup.sh** with `--install` option. And if you wish to configure *Termux-Boot*, run **setup.sh** with `--termux-boot` option.
